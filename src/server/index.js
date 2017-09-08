@@ -18,16 +18,15 @@ const routes = [
 sourceMapSupport.install();
 
 const app = express();
+
 app.use('/static', express.static('./dist'));
 
 app.get('*', (req, res) => {
-  console.log(req.url);
   const match = routes.reduce((acc, route) => matchPath(req.url, route, { exact: true }) || acc, null);
   if (!match) {
     res.status(404).send(render(<NoMatch />));
     return;
   }
-  console.log(req.url);
   res.status(200).send(render(
     (
       <Router context={{}} location={req.url}>

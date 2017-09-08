@@ -25,17 +25,31 @@ module.exports = {
         test: /\.js$/,
         loader: 'babel-loader'
       }, {
-        test: /\.less$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader!less-loader'),
-      }, {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('style-loader', 'css-loader'),
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: 'css-loader'
+        })
+      }, {
+        test: /\.less$/,
+        use: ExtractTextPlugin.extract({
+          fallback: 'style-loader',
+          use: ['css-loader', 'less-loader']
+        })
+      }, {
+        test: /\.(woff|woff2|svg|eot|ttf)\??.*$/,
+        loader: 'file-loader?name=asset/fonts/[name].[ext]',
+      }, {
+        test: /\.(png|jpg|jpeg|gif)$/,
+        loader: 'url-loader?limit=8192&name=asset/images/[name].[ext]',
       }
     ]
   },
   plugins: [
     new CopyWebpackPlugin([
       { from: `${srcPath}/index.html` },
+      { from: `${path.resolve(__dirname)}/node_modules/font-awesome/fonts`, to: 'fonts' },
+      { from: `${path.resolve(__dirname)}/node_modules/font-awesome/css/font-awesome.min.css`, to: 'css' }
     ]),
     new HtmlWebpackPlugin({
       hash: true,
@@ -43,5 +57,8 @@ module.exports = {
     }),
     new ExtractTextPlugin('main.css'),
   ],
-  devtool: 'source-map'
+  devtool: 'source-map',
+  devServer: {
+    historyApiFallback: true, // BrowserRouter error
+  },
 };

@@ -1,9 +1,3 @@
-import React from 'react';
+import Controler from './controller';
 
-export default (props) => {
-  return (
-    <div>
-      hello world!
-    </div>
-  );
-};
+export default Controler;

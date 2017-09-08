@@ -1,17 +1,21 @@
 import React from 'react';
-import { Link, Route } from 'react-router-dom';
+import { Link, Route, Switch } from 'react-router-dom';
 
 import { Overview, NoMatch, Error } from './module';
+
+import Header from './component/header';
 
 export default ({ gists }) => {
   return (
     <div>
-      <div></div>
       <div>
-        <Route path="/" exact component={Overview} />
-        <Route path="/nomatch" component={NoMatch} />
-        <Route path="/error" component={Error} />
+        <Header />
       </div>
+      <Switch>
+        <Route path="/" exact component={Overview} />
+        <Route path="/error" component={Error} />
+        <Route component={NoMatch} />
+      </Switch>
     </div>
   );
 };

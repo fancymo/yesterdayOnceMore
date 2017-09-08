@@ -2,12 +2,18 @@
 //
 // Table of Contents
 //
+// Prefix
 // Colors
+// Font
 // Spacing
 // Options
 
+// Prefix
+// --------------------------------------
+@prefix: y_;
+
 // Colors
-//
+// --------------------------------------
 // specific hex values.
 @white: #fff;
 @black: #000;
@@ -34,3 +40,35 @@
 @ui-warning: @orange;
 @ui-danger: @red;
 @ui-inverse: @gray-dark;
+
+
+// font
+// --------------------------------------
+// font-family
+@font-family-default: -apple-system, "San Francisco", "Roboto", "Helvetica Neue", Helvetica, Arial, "PingFang SC", "Noto Sans", "Droid Sans Fallback", "Microsoft Yahei";
+
+// font size
+@font-size-default: 16px;
+@font-size-s: @font-size-default - 2px; // 14px
+@font-size-xs: @font-size-s - 2px; // 12px
+@font-size-xxs: @font-size-xs - 2px; // 10px
+@font-size-l: @font-size-default + 2px; // 18px
+@font-size-xl: @font-size-l + 2px; // 20px
+@font-size-xxl: @font-size-xl + 4px; // 24px
+
+// line height
+@line-height-default: 1.15; // 16px × 1.25 = 20px
+
+// Spacing
+// --------------------------------------
+//
+@space-default: 12px;
+@space-s: 4px;
+@space-l: 16px;
+
+
+// border radius
+@border-radius-default: 2px;
+
+// box shadow
+@box-shadow-default: 0 1px 2px rgba(0, 0, 0, .15);
