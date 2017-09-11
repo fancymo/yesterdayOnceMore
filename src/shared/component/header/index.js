@@ -20,7 +20,7 @@ export default class ClassName extends Component {
             <SearchBar />
           </div>
           <nav className="y_h_nav">
-            <Link activeClassName="y_nav_link__active" to={'/'} >Home</Link>
+            <Link className="y_nav_link" activeClassName="y_nav_link__active" to={'/'} >Home</Link>
           </nav>
           <div className="y_h_func">
             <Button>Login</Button>
